@@ -1,0 +1,56 @@
+import React, { useState } from 'react';
+
+import './App.css';
+
+var pictureArray = ["./images/three.jpg", "./images/two.jpg", "./images/one.jpg",];
+
+var lengthOfPictureArray = pictureArray.length
+
+
+function App() {
+
+  const [count, setCount] = useState(0);
+
+  function decrementCount() {
+
+    setCount(prevCount => prevCount - 1)
+
+    if (count == 0) {
+
+      setCount(lengthOfPictureArray-1 )
+    }
+
+    console.log(count)
+
+  }
+
+  // loop button so it doesn't get stuck at 0/-1 so it goes  0,1,2,0,1,2 ,0,1,2 //
+
+  function incrementCount() {
+
+    setCount(prevCount => prevCount + 1)
+
+    if (count == 2) {
+
+      setCount(lengthOfPictureArray -3)
+
+    }
+
+    console.log(count)
+  }
+
+
+  return (
+    <div className="App">
+      <h1> Division 3 Recruiting </h1>
+      <h2> Professional Concrete Construction Recruiting!</h2>
+      <img src={pictureArray[count]} alt="Lithko image" />
+      <button onClick={decrementCount} >Back </button>
+      <button onClick={incrementCount}> Forward </button>
+    </div>
+
+
+  );
+}
+
+export default App;
